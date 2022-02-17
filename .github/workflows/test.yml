@@ -4,7 +4,7 @@ on:
 
 jobs:
   bigwigs_github_alpha_release:
-    name: Build via BigWigs packager for GitHub only
+    name: Build via BigWigs packager for GitHub onlyx
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
