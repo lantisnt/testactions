@@ -9,17 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow --tags
-      - name: Get name of zip file
-        run: echo "ARTIFACT=`readlink -f *.md`" >> $GITHUB_ENV
       - name: Create name of release
         run: echo "RELEASENAME=`git describe --abbrev=0 --tags HEAD`-$GITHUB_SHA" >> $GITHUB_ENV
+      - name: Zip artifact
+        run: tar czf ${{ env.RELEASENAME }}.zip README.md 
+      - name: Get name of zip file
+        run: echo "ARTIFACT=`readlink -f *.zip`" >> $GITHUB_ENV
       - name: ECHO
         run: echo ${{ env.ARTIFACT }} ${{ env.RELEASENAME }}
       - name: Create Release and upload artifact to GitHub
         uses: ncipollo/release-action@v1
         with:
-          name: ${{ env.RELEASENAME }}
-          tag: latest-commit
+          name: alpha-drop
+          tag: alpha-drop
           omitBody: true
           allowUpdates: true
           artifacts: ${{ env.ARTIFACT }}
