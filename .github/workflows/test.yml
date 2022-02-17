@@ -1,7 +1,6 @@
 name: Alpha Release
 on:
   push:
-
 jobs:
   bigwigs_github_alpha_release:
     name: Build via BigWigs packager for GitHub onlyx
