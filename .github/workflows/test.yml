@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow --tags
       - name: Get name of zip file
         run: echo "artifact=`readlink -f *.md`" >> $GITHUB_ENV
       - name: Create name of release
