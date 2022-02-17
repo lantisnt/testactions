@@ -20,6 +20,8 @@ jobs:
         with:
           name: ${{ env.RELEASENAME }}
           tag: latest-commit
+          omitBody: true
+          allowUpdates: true
           artifacts: ${{ env.ARTIFACT }}
           prerelease: true
           token: ${{ secrets.GITHUB_TOKEN }}
