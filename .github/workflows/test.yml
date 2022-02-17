@@ -1,0 +1,21 @@
+name: Alpha Release
+on:
+  push:
+
+jobs:
+  bigwigs_github_alpha_release:
+    name: Build via BigWigs packager for GitHub only
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get name of zip file
+        run: echo "artifact=`pwd`" >> $
+      - name: Create name of release
+        run: echo "releasename=`git describe --abbrev=0 --tags HEAD`-$env:GITHUB_SHA" >> $
+      - name: Create Release and upload artifact to GitHub
+        uses: ncipollo/release-action@v1
+        with:
+          name: $env:releasename
+          tag: $env:rreleasename
+          artifacts: $env:rartifact
+          prerelease: true
+          token: ${{ secrets.GITHUB_TOKEN }}
