@@ -7,6 +7,7 @@ jobs:
     name: Build via BigWigs packager for GitHub only
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Get name of zip file
         run: echo "artifact=`readlink -f *.md`" >> $GITHUB_ENV
       - name: Create name of release
