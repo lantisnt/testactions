@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow --tags
       - name: Get name of zip file
-        run: echo "artifact=`readlink -f *.md`" >> $GITHUB_ENV
+        run: echo "ARTIFACT=`readlink -f *.md`" >> $GITHUB_ENV
       - name: Create name of release
         run: echo "RELEASENAME=`git describe --abbrev=0 --tags HEAD`-${{ env.GITHUB_SHA }}" >> $GITHUB_ENV
       - name: ECHO
